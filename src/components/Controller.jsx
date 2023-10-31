@@ -35,7 +35,7 @@ function Controller() {
         }}
       />
       <Box
-        onClick={currentTrackIndex ? togglePlay : () => {}}
+        onClick={currentTrackIndex !== null ? togglePlay : () => {}}
         sx={{
           display: 'flex',
           alignItems: 'center',
