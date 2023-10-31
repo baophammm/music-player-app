@@ -7,8 +7,13 @@ import SkipNextOutlinedIcon from '@mui/icons-material/SkipNextOutlined';
 import useMusicPlayer from '../hooks/useMusicPlayer';
 
 function Controller() {
-  const { togglePlay, isPlaying, playPreviousTrack, playNextTrack } =
-    useMusicPlayer();
+  const {
+    currentTrackIndex,
+    togglePlay,
+    isPlaying,
+    playPreviousTrack,
+    playNextTrack,
+  } = useMusicPlayer();
   return (
     <Box
       sx={{
@@ -23,14 +28,14 @@ function Controller() {
     >
       <SkipPreviousOutlinedIcon
         fontSize="large"
-        onClick={playPreviousTrack}
+        onClick={isPlaying ? playPreviousTrack : () => {}}
         sx={{
           borderRadius: '50%',
           '&:hover': { cursor: 'pointer', background: '#95a5a6' },
         }}
       />
       <Box
-        onClick={togglePlay}
+        onClick={currentTrackIndex ? togglePlay : () => {}}
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -49,7 +54,7 @@ function Controller() {
 
       <SkipNextOutlinedIcon
         fontSize="large"
-        onClick={playNextTrack}
+        onClick={isPlaying ? playNextTrack : () => {}}
         sx={{
           borderRadius: '50%',
           '&:hover': { cursor: 'pointer', background: '#95a5a6' },
